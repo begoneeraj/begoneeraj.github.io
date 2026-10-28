@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<p align="center"><img src="./docs/readme/hero.svg" width="100%" alt="The Portfolio — Ideas. Interfaces. Shipped projects." /></p>
 
-## Getting Started
+# The Portfolio
 
-First, run the development server:
+**Ideas. Interfaces. Shipped projects.**
+
+[Visit portfolio](https://begoneeraj.github.io) · [Development](#development) · [Deployment](#deployment)
+
+<table><tr><td width="33%" valign="top"><h3>Explore the work</h3><p>Project cards backed by a shared data module.</p></td><td width="33%" valign="top"><h3>Feel the motion</h3><p>Framer Motion, particles, and theme controls.</p></td><td width="33%" valign="top"><h3>Export and ship</h3><p>Next.js static output deployed to GitHub Pages.</p></td></tr></table>
+
+The source for Pushpraj Singh Prashant's portfolio: an animated Next.js site covering background, skills, projects, and contact.
+
+## Design and interaction
+
+- **Motion:** Framer Motion transitions and a particle field component.
+- **Theme:** Shared appearance controls through a theme provider.
+- **Content:** Project and profile data in `src/lib/data.ts`.
+- **Composition:** Separate hero, about, skills, projects, and contact components.
+
+## Development
+
+Use **Node.js 24** to match the deployment workflow.
 
 ```bash
+git clone https://github.com/begoneeraj/begoneeraj.github.io.git
+cd begoneeraj.github.io
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open **http://localhost:3000**.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Command | Purpose |
+| :--- | :--- |
+| `npm run dev` | Start development |
+| `npm run lint` | Run ESLint |
+| `npm run build` | Generate static output in `out/` |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Customize
 
-## Learn More
+| Location | What to edit |
+| :--- | :--- |
+| `src/lib/data.ts` | Portfolio content |
+| `src/components/` | Section UI and interactions |
+| `src/app/page.tsx` | Page composition |
+| `src/app/globals.css` | Global styles |
+| `public/` | Public assets |
 
-To learn more about Next.js, take a look at the following resources:
+## Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Next.js 16 · React 19 · TypeScript · Tailwind CSS 4 · Framer Motion · Lucide
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment
 
-## Deploy on Vercel
+The GitHub Pages workflow runs on pushes to `main` and manual dispatch. It installs dependencies, builds, uploads `out/`, and deploys that artifact.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+`next.config.ts` enables static export and unoptimized images. Preview an export locally with:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run build
+npx serve out
+```
